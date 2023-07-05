@@ -1,0 +1,48 @@
+<div class="container">
+    <legend>Create User</legend>
+    <form>
+      <div class="mb-4">
+        <!--Email validation-->
+        <label for="txtEmail" class="form-label">Email</label>
+        <div class="example-container">
+            <mat-form-field>
+              <mat-label>Enter your email</mat-label>
+              <input matInput placeholder="pat@example.com" [formControl]="email" required>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </div>
+      </div>
+      <div class="mb-4">
+        <!--Username validation-->
+        <label for="txtUsername" class="form-label">Username</label>
+        <mat-form-field>
+            <mat-label>Enter your username</mat-label>
+            <input matInput>
+          </mat-form-field>
+      </div>
+      <div class="mb-4">
+        <!--Password validation-->
+        <label for="txtPassword" class="form-label">Password</label>
+        <mat-form-field>
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+      </div>
+      <div class="mb-4">
+        <!--Speciality validation-->
+        <label for="txtSpeciality" class="form-label">Speciality</label>
+        <mat-form-field>
+            <mat-label></mat-label>
+            <mat-select>
+              <mat-option value="one">Admin</mat-option>
+              <mat-option value="two">Moderator</mat-option>
+              <mat-option value="three">User</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+      <button type="button" (click)="create()" class="btn btn-primary">Create</button>
+    </form>
+</div>

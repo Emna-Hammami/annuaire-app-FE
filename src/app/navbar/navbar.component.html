@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+    <span>User Management</span>
+     <a mat-button routerLink="/user/home">Users</a>
+     <a *ngIf="isLoggedIn" mat-button routerLink="/speciality/home">Specialities</a>
+     <a mat-button routerLink="/subscription/home">Memberships</a>
+     <a mat-button  routerLink="/signup">Signup</a>
+     <a mat-button  routerLink="/login">Signin</a>
+
+</mat-toolbar>
