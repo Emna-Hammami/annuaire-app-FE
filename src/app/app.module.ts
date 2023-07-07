@@ -5,20 +5,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { NgIf } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { FormGroupDirective, FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-
-import { NgIf } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -26,6 +26,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { Speciality } from './speciality/speciality';
 import { UserModule } from './user/user.module';
+
+
+
 
 export interface User {
   id: number;
@@ -41,6 +44,7 @@ export interface User {
     RegisterComponent,
     ProfileComponent,
     NavbarComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -57,25 +61,12 @@ export interface User {
     MatDialogModule,
     MatTableModule,
     MatInputModule,
-    FormsModule,
-    UserModule,ReactiveFormsModule, NgIf,
-    MatSelectModule
+    FormsModule, ReactiveFormsModule, NgIf,
+    MatSelectModule,
+    UserModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders, NgForm, FormGroupDirective, ErrorStateMatcher],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
-export class FormFieldErrorExample {
-  email = new FormControl('', [Validators.required, Validators.email]);
-
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
-}
-
-export class FormFieldOverviewExample {}
