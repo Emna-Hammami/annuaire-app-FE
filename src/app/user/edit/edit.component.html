@@ -1,19 +1,39 @@
 <div class="container">
-    <legend>Edit User</legend>
+    <h2>Edit User</h2>
     <form>
       <div class="mb-4">
         <label for="txtEmail" class="form-label">Email</label>
         <!-- email input -->
-        
-      </div>
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Enter your email" value="User.email">
+          </mat-form-field>
+        </form>
+        </div>
+
       <div class="mb-4">
         <label for="txtUsername" class="form-label">Username</label>
+        <form class="example-form">
         <!-- username input-->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Enter your username" value="User.username">
+        </mat-form-field>
+      </form>
 
       </div>
       <div class="mb-4">
         <label for="txtSpeciality" class="form-label">Speciality</label>
+        <form class="example-form">
         <!--speciality input-->
+        <mat-form-field>
+          <mat-label><!--{{User.speciality}}--></mat-label>
+          <mat-select>
+            <mat-option value="one">Admin</mat-option>
+            <mat-option value="two">Moderator</mat-option>
+            <mat-option value="three">User</mat-option>
+          </mat-select>
+        </mat-form-field>
+        </form>
       </div>
       <button type="button" (click)="update()" class="btn btn-primary">Edit</button>
     </form>

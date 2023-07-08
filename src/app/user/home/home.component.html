@@ -3,25 +3,25 @@
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
   
-    <!-- Position Column -->
+    <!-- id Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> # </th>
       <td mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
   
-    <!-- Name Column -->
+    <!-- username Column -->
     <ng-container matColumnDef="username">
       <th mat-header-cell *matHeaderCellDef> Username </th>
       <td mat-cell *matCellDef="let element"> {{element.username}} </td>
     </ng-container>
   
-    <!-- Weight Column -->
+    <!-- email Column -->
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef> Email </th>
       <td mat-cell *matCellDef="let element"> {{element.email}} </td>
     </ng-container>
   
-    <!-- Symbol Column -->
+    <!-- speciality Column -->
     <ng-container matColumnDef="speciality">
       <th mat-header-cell *matHeaderCellDef> Speciality </th>
       <td mat-cell *matCellDef="let element"> {{element.speciality}} </td>

@@ -4,10 +4,18 @@ import { Speciality } from 'src/app/speciality/speciality';
 import { User } from '../user';
 import { UserService } from '../user.service';
 
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+
+
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  styleUrls: ['./edit.component.css'],
+  standalone: true,
+  imports: [MatFormFieldModule, MatInputModule, MatSelectModule],
 })
 export class EditComponent implements OnInit {
   allSpecialities: Speciality[] = [];
