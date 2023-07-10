@@ -1,1 +1,35 @@
-<p>edit works!</p>
+<div class="container">
+    <h2>Edit Speciality</h2>
+    <form>
+      <div class="mb-4">
+        <label for="txtName" class="form-label">Name</label>
+        <!-- name input -->
+        <form class="example-form">
+            <mat-form-field>
+                <mat-label><!--{{Speciality.name}}--></mat-label>
+                <mat-select>
+                  <mat-option value="one">Admin</mat-option>
+                  <mat-option value="two">Moderator</mat-option>
+                  <mat-option value="three">User</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </form>
+        </div>
+
+
+      <div class="mb-4">
+        <label for="txtDescription" class="form-label">Description</label>
+        <form class="example-form">
+        <!-- description input-->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Enter the description" value="Speciality.description">
+        </mat-form-field>
+      </form>
+
+      </div>
+      
+      <div class="example-button-row">
+        <button mat-raised-button (click)="update()" class="btn btn-primary" color="blue">Edit</button>
+      </div>
+    </form>
+</div>

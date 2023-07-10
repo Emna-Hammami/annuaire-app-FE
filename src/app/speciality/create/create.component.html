@@ -1,1 +1,25 @@
-<p>create works!</p>
+<div class="container">
+    <legend>Create Speciality</legend>
+    <form>
+        <!--name validation-->
+        <label for="txtname" class="form-label">Name</label>
+        <mat-form-field>
+            <mat-label>Enter your specialitys' name</mat-label>
+            <mat-select>
+              <mat-option value="one">Admin</mat-option>
+              <mat-option value="two">Moderator</mat-option>
+              <mat-option value="three">User</mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+        <!--Description validation-->
+        <label for="txtDescription" class="form-label">Description</label>
+        <mat-form-field>
+            <mat-label>Enter the Description</mat-label>
+            <input matInput>
+          </mat-form-field>
+
+
+      <button type="button" (click)="create()" class="btn btn-primary">Create</button>
+    </form>
+</div>

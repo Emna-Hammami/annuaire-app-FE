@@ -1,3 +1,9 @@
+<br><br>
+<div class="example-button-row">
+  <button mat-raised-button router-link="user/create" class="btn btn-primary" style="color: blue;">Create</button>
+</div>
+<br><br>
+
 <table mat-table class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
@@ -26,6 +32,21 @@
       <th mat-header-cell *matHeaderCellDef> Speciality </th>
       <td mat-cell *matCellDef="let element"> {{element.speciality}} </td>
     </ng-container>
+
+    <!-- actions column-->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+              <button mat-fab router-link="" color="primary" aria-label="Example icon button with a delete icon">
+                <mat-icon>delete</mat-icon>
+              </button>
+
+              <button mat-mini-fab router-link="user/edit" color="primary" aria-label="Example icon button with a menu icon">
+                <mat-icon>edit</mat-icon>
+              </button>
+      </td>
+    </ng-container>
+  
   
     <tr mat-header-row *matHeaderRowDef="['id', 'username', 'email', 'speciality']"></tr>
     <tr mat-row *matRowDef="let row; columns: ['id', 'username', 'email', 'speciality']"></tr>

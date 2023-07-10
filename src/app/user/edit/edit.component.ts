@@ -5,17 +5,17 @@ import { User } from '../user';
 import { UserService } from '../user.service';
 
 
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css'],
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatSelectModule],
+  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule],
 })
 export class EditComponent implements OnInit {
   allSpecialities: Speciality[] = [];

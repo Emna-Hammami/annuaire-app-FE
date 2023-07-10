@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { Speciality } from 'src/app/speciality/speciality';
 import { User } from '../user';
 import { UserService } from '../user.service';
-
 
 export interface UserList {
   id: number;
@@ -20,7 +20,7 @@ export interface UserList {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,
-  imports: [MatTableModule],
+  imports: [MatTableModule, MatIconModule],
 })
 
 
