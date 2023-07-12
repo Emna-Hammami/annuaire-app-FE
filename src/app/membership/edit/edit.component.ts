@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Speciality } from 'src/app/speciality/speciality';
-import { User } from '../user';
-import { UserService } from '../user.service';
-
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Membership } from '../membership';
+import { MembershipService } from '../membership.service';
 
 @Component({
   selector: 'app-edit',
@@ -18,22 +15,18 @@ import { MatSelectModule } from '@angular/material/select';
   imports: [MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule],
 })
 export class EditComponent implements OnInit {
-  allSpecialities: Speciality[] = [];
-  userForm: User = {
+  experation: Date | undefined;
+
+  membershipForm: Membership = {
     id: 0,
-    email: '',
-    username: '',
-    password:'',
-    speciality:{
-      id :0,
-      name:'',
-      description:'',
-    }
+    experation: new Date(),
+    amount: 0,
+    payment: '',
   };
   constructor(
     private route: ActivatedRoute,
     private router:Router,
-    private userService: UserService
+    private membershipService: MembershipService
   ) {}
  
   ngOnInit(): void {
@@ -44,16 +37,16 @@ export class EditComponent implements OnInit {
   }
  
   getById(id: number) {
-    this.userService.getById(id).subscribe((data) => {
-      this.userForm = data;
+    this.membershipService.getMembershipById(id).subscribe((data) => {
+      this.membershipForm = data;
     });
   }
  
   update() {
-    this.userService.updateUser(this.userForm)
+    this.membershipService.updateMembership(this.membershipForm)
     .subscribe({
       next:(data) => {
-        this.router.navigate(["/user/home"]);
+        this.router.navigate(["/membership/home"]);
       },
       error:(err) => {
         console.log(err);

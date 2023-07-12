@@ -7,10 +7,12 @@ const routes: Routes = [
   {
     path: 'users/home',
     redirectTo: 'users/home',
+    pathMatch: 'full',
   },
   {
     path: 'speciality/home',
     redirectTo: 'speciality/home',
+    pathMatch: 'full',
   },
   {
     path: 'login',
@@ -19,6 +21,16 @@ const routes: Routes = [
   {
     path: 'signup',
     component: RegisterComponent
+  },
+  {
+    path: '',
+    redirectTo: 'membership/home',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
+    redirectTo: 'notification/home',
+    pathMatch: 'full',
   },
 
 ];

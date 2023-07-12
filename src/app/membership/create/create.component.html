@@ -1,0 +1,50 @@
+<div class="container">
+    <legend>Create Membership</legend>
+    <form>
+        <!--Date experation validation-->
+        <label for="txtExp" class="form-label"> Experation date</label>
+        <mat-form-field>
+            <mat-label>Pick your experation date</mat-label>
+            <!--input matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker [calendarHeaderComponent]="exampleHeader"></mat-datepicker-->
+          </mat-form-field>
+      
+        <!--Amount validation-->
+        <label for="txtAmount" class="form-label">Amount</label>
+        <mat-form-field class="example-full-width">
+            <input matInput type="number" step="0.01" placeholder="Enter the amount" [(ngModel)]="membershipForm.amount" id="amount" name="amount">
+          </mat-form-field>
+
+          <!--Payment mode validation-->
+          <mat-form-field class="example-full-width">
+            <input matInput type="text" placeholder="Enter the payment mode" [(ngModel)]="membershipForm.payment" id="payment" name="payment">
+          </mat-form-field>
+      
+
+
+          <div class="button-row" role="group">
+            <button type="submit" mat-raised-button color="primary" >Submit</button>
+            <button type="button" mat-button color="accent" routerLink="/membership/home" >Cancel</button>
+          </div>
+    </form>
+</div>
+
+<!--template>
+    <div class="example-header">
+        <button mat-icon-button (click)="previousClicked('year')">
+          <mat-icon>keyboard_double_arrow_left</mat-icon>
+        </button>
+        <button mat-icon-button (click)="previousClicked('month')">
+          <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <span class="example-header-label">{{periodLabel}}</span>
+        <button mat-icon-button (click)="nextClicked('month')">
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        <button mat-icon-button (click)="nextClicked('year')">
+          <mat-icon>keyboard_double_arrow_right</mat-icon>
+        </button>
+      </div>
+</template-->

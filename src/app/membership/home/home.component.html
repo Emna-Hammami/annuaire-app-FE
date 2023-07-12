@@ -1,0 +1,55 @@
+<br><br>
+<div class="example-button-row">
+  <button mat-raised-button router-link="membership/create" class="btn btn-primary" style="color: blue;">Create</button>
+</div>
+<br><br>
+
+<table mat-table class="mat-elevation-z8" [dataSource]="allMemberships">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> # </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- experation Column -->
+    <ng-container matColumnDef="expiration">
+      <th mat-header-cell *matHeaderCellDef> Expiration </th>
+      <td mat-cell *matCellDef="let element"> {{element.expiration}} </td>
+    </ng-container>
+  
+    <!-- amount Column -->
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+    </ng-container>
+  
+    <!-- payment Column -->
+    <ng-container matColumnDef="payment">
+      <th mat-header-cell *matHeaderCellDef> Payment mode </th>
+      <td mat-cell *matCellDef="let element"> {{element.payment}} </td>
+    </ng-container>
+
+    <!-- actions column-->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+              <button mat-fab router-link="" color="primary" aria-label="Example icon button with a delete icon">
+                <mat-icon>delete</mat-icon>
+              </button>
+
+              <button mat-mini-fab router-link="membership/edit" color="primary" aria-label="Example icon button with a menu icon">
+                <mat-icon>edit</mat-icon>
+              </button>
+      </td>
+    </ng-container>
+  
+  
+    <tr mat-header-row *matHeaderRowDef="['id', 'expiration', 'amount', 'payment']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'expiration', 'amount', 'payment']"></tr>
+  </table>
+  
+  

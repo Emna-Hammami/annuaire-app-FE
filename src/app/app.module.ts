@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,13 +22,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { LoginComponent } from './login/login.component';
+import { MembershipModule } from './membership/membership.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { Speciality } from './speciality/speciality';
 import { UserModule } from './user/user.module';
-
-
 
 
 export interface User {
@@ -48,7 +47,7 @@ export interface User {
     
   ],
   imports: [
-    BrowserModule,CommonModule,
+    CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -64,7 +63,7 @@ export interface User {
     MatInputModule,
     FormsModule, ReactiveFormsModule, NgIf,
     MatSelectModule,
-    UserModule
+    UserModule, MembershipModule
   ],
   providers: [authInterceptorProviders, NgForm, FormGroupDirective, ErrorStateMatcher],
   bootstrap: [AppComponent]

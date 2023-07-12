@@ -1,14 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Speciality } from 'src/app/speciality/speciality';
-import { SpecialityService } from 'src/app/speciality/speciality.service';
-import { User } from '../user';
-import { UserService } from '../user.service';
-
-
 import { NgIf } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { FormControl, FormGroupDirective, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroupDirective, FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -21,6 +14,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Router } from '@angular/router';
+import { NotificationService } from '../notification.service';
+
+
 
 @Component({
   selector: 'app-create',
@@ -32,27 +29,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,MatDialogModule,MatTableModule,
     MatInputModule,ReactiveFormsModule, NgIf,MatSelectModule,]
 })
+
+
 export class CreateComponent implements OnInit {
 
   emailFormControl = new FormControl();
   hide = false;
   matcher: ErrorStateMatcher= new ErrorStateMatcher();
 
-  allSpecialities: Speciality[] = [];
-  userForm: User = {
+  /*notificationForm: Notification = {
     id: 0,
-    email: '',
-    username: '',
-    password:'',
-    speciality:{
-      id :0,
-      name:'',
-      description:'',
-    }
-  };
+    title: '',
+    description: '',
+  };*/
  
-  constructor(private userService:UserService,
-    private specialityService: SpecialityService,
+  constructor(private notificationService:NotificationService,
     private router:Router) {}
  
   ngOnInit(): void {
@@ -61,40 +52,29 @@ export class CreateComponent implements OnInit {
   }
  
   get() {
-    this.specialityService.getSpeciality().subscribe((data) => {
+    this.notificationService.getNotification().subscribe((data) => {
       console.log("two");
-      this.allSpecialities = data;
+      //this.notificationForm = data;
       console.log("three");
     });
   }
  
-  create(){
+ /* create(){
     console.log("four");
-    this.userService.createUser(this.userForm)
+    this.notificationService.createNotification(this.notificationForm)
     .subscribe({
       next:(data) => {
-        this.router.navigate(["/user/home"])
+        this.router.navigate(["/notification/home"])
       },
       error:(err) => {
         console.log(err);
       }
     })
     console.log("five");
-  }
+  }*/
 
 }
 
-export class FormFieldErrorExample {
-  email = new FormControl('', [Validators.required, Validators.email]);
-
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
-}
 
 export class FormFieldOverviewExample {}
 
@@ -104,12 +84,5 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
 }
-
-export class InputErrorStateMatcherExample {
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-
-  matcher = new MyErrorStateMatcher();
-}
-
 
 

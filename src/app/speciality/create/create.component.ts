@@ -63,7 +63,7 @@ export class CreateComponent implements OnInit {
     this.specialityService.createSpeciality(this.specialityForm)
     .subscribe({
       next:(data) => {
-        this.router.navigate(["/users/home"])
+        this.router.navigate(["/user/home"])
       },
       error:(err) => {
         console.log(err);

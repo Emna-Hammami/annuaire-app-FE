@@ -44,7 +44,7 @@ export class EditComponent implements OnInit {
     this.specialityService.updateSpeciality(this.specialityForm)
     .subscribe({
       next:(data) => {
-        this.router.navigate(["/specialities/home"]);
+        this.router.navigate(["/speciality/home"]);
       },
       error:(err) => {
         console.log(err);

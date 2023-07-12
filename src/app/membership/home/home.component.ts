@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Membership } from '../membership';
+import { MembershipService } from '../membership.service';
+
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
-import { Speciality } from '../speciality';
-import { SpecialityService } from '../speciality.service';
 
 @Component({
   selector: 'app-home',
@@ -12,23 +13,17 @@ import { SpecialityService } from '../speciality.service';
   imports: [MatTableModule, MatIconModule],
 })
 export class HomeComponent implements OnInit {
-  displayedColumns = ['id', 'name', 'description', 'actions'];
-
-  allSpecialities: Speciality[] = [];
-  deleteModal: any;
-  idTodelete: number = 0;
+  allMemberships: Membership[] = [];
  
-  constructor(private specialityService: SpecialityService) {}
+  constructor(private membershipService: MembershipService) {}
  
   ngOnInit(): void {
-    
- 
     this.get();
   }
  
   get() {
-    this.specialityService.getSpeciality().subscribe((data) => {
-      this.allSpecialities = data;
+    this.membershipService.getMembership().subscribe((data) => {
+      this.allMemberships = data;
     });
   }
 
