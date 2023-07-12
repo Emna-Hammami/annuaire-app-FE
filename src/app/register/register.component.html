@@ -14,7 +14,7 @@
     >
       <div class="form-group">
         <label for="username">Username</label>
-        <input
+        <!--input
           type="text"
           class="form-control"
           name="username"
@@ -23,7 +23,18 @@
           minlength="3"
           maxlength="20"
           #username="ngModel"
-        />
+        /-->
+        <mat-form-field hintLabel="Max 20 characters">
+          <mat-label></mat-label>
+          <input matInput #input maxlength="20" placeholder="Enter your username"
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="form.username"
+          required
+          #username="ngModel">
+          <mat-hint align="end">{{input.value.length}}/20</mat-hint>
+        </mat-form-field>
         <div class="alert-danger" *ngIf="username.errors && f.submitted">
           <div *ngIf="username.errors?.['required']">Username is required</div>
           <div *ngIf="username.errors?.['minlength']">
@@ -36,7 +47,7 @@
       </div>
       <div class="form-group">
         <label for="email">Email</label>
-        <input
+        <!--input
           type="email"
           class="form-control"
           name="email"
@@ -44,17 +55,30 @@
           required
           email
           #email="ngModel"
-        />
-        <div class="alert-danger" *ngIf="email.errors && f.submitted">
-          <div *ngIf="email.errors?.['required']">Email is required</div>
-          <div *ngIf="email.errors?.['email']">
-            Email must be a valid email address
-          </div>
-        </div>
+        /-->
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                 placeholder="Ex. pat@example.com"
+                 type="email"
+          class="form-control"
+          name="email"
+          required
+          email
+          >
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input
+        <!--input
           type="password"
           class="form-control"
           name="password"
@@ -68,7 +92,14 @@
           <div *ngIf="password.errors?.['minlength']">
             Password must be at least 6 characters
           </div>
-        </div>
+        </div-->
+        <mat-form-field>
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
       </div>
       <div class="form-group">
         <button class="btn btn-primary btn-block">Sign Up</button>

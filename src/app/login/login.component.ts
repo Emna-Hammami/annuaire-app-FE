@@ -2,12 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  standalone: true,
+  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, FormsModule],
 })
 export class LoginComponent implements OnInit {
+
+  hide: boolean = true;
+
   form: any = {
     username: null,
     password: null
@@ -49,4 +62,10 @@ export class LoginComponent implements OnInit {
   reloadPage(): void {
     window.location.reload();
   }
+}
+
+export class FormFieldHintExample {}
+
+export class FormFieldPrefixSuffixExample {
+  hide = true;
 }

@@ -21,11 +21,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
-import { LoginComponent } from './login/login.component';
 import { MembershipModule } from './membership/membership.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
-import { RegisterComponent } from './register/register.component';
 import { Speciality } from './speciality/speciality';
 import { UserModule } from './user/user.module';
 
@@ -40,8 +38,8 @@ export interface User {
 
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent,
-    RegisterComponent,
+    AppComponent, 
+    
     ProfileComponent,
     NavbarComponent,
     
